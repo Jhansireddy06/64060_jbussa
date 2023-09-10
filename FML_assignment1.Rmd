@@ -1,0 +1,43 @@
+---
+title: "FML_Assignment"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+date: "2023-09-09"
+---
+#Importing dataset by giving the path
+```{r}
+library("readxl")
+credit <- read.csv("C:/Users/jhans/OneDrive/Documents/FML/credit_data.csv")
+View(credit)
+```
+#Descriptive statistics for selection of quantitative and categorical variables
+```{r}
+summary(credit)
+```
+```{r}
+sd(credit$Number.of.Existing.Loans)
+```
+```{r}
+var(credit$Age)
+```
+#Transform at least one variable
+```{r}
+credit$Loan.Tenure<-(credit$Loan.Tenure+1.5)
+summary(credit)
+```
+#one quantitative variable
+```{r}
+hist(credit$Credit.Score)
+```
+#one scatterplot
+```{r}
+x<-(credit$Profile.Score)
+y<-(credit$Age)
+# Corrected code
+plot(x, y, main = "Profile.Score VS Age ", xlab = "Profile.Score", ylab = "Age ")
+abline(lm(y ~ x), col = "blue")
+
+```
